@@ -8,6 +8,9 @@ Tasks left to do:
 - Integration Tests: Cover database operations to ensure the queries work as expected.
 - Consider basic protections against common exploits such as SQL injection or script injection.
 
+BONUS (if time)
+- Make a hovereffect on blogpost to indicate that it is clickable. Currently only default cursor change shows that it is clickable
+
 - Optional Enhancements
 Add login/logout features if you want to practice authentication.
 Deleting blog posts and/or comments.
