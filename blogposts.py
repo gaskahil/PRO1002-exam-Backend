@@ -1,10 +1,6 @@
-#Need to contain the following:
-# - Title
-# - Publishing date 
-# - Excerpt
-# - tags
-# - Body
+#This file is a test file ment for blog content, not for the app.py file.
 post1 = {
+    "id": 1,
     "title": "The Power of Morning Routines",
     "date": "2025-06-02",
     "excerpt": "Starting your day with a consistent morning routine can boost productivity, reduce stress, and improve focus.",
@@ -16,6 +12,7 @@ the tone for the rest of the day. It’s not about perfection—it’s about int
 }
 
 post2 = {
+    "id": 2,
     "title": "Exploring the Wonders of Space",
     "date": "2025-06-05",
     "excerpt": "Space exploration continues to unveil the mysteries of the universe, from black holes to distant galaxies.",
@@ -27,6 +24,7 @@ and the Mars rovers have expanded our understanding of the cosmos and our place 
     "tags": ["Space", "Exploration", "Astronomy", "Science", "Technology"]
 }
 post3 = {
+    "id": 3,
     "title": "The Art of Minimalism",
     "date": "2025-06-10",
     "excerpt": "Embracing minimalism can lead to a more fulfilling life by focusing on what truly matters.",
@@ -37,6 +35,7 @@ It’s about quality over quantity, and finding beauty in simplicity.""",
     "tags": ["Minimalism", "Lifestyle", "Simplicity", "Wellness", "SelfImprovement"]
 }
 post4 = {
+    "id": 4,
     "title": "The Future of Renewable Energy",
     "date": "2025-06-15",
     "excerpt": "Renewable energy sources are crucial for a sustainable future, reducing our reliance on fossil fuels.",
@@ -47,6 +46,7 @@ The future of energy lies in harnessing the power of nature to meet our needs wi
     "tags": ["RenewableEnergy", "Sustainability", "Environment", "ClimateChange", "Technology"]
 }
 post5 = {
+    "id": 5,
     "title": "The power of a good cup of coffee",
     "date": "2025-05-20",
     "excerpt": "A good cup of coffee can transform your morning, energizing you for the day ahead.",
@@ -58,6 +58,7 @@ It's not just about caffeine; it's about the experience, the warmth, and the com
 }
 
 post6 = {
+    "id": 6,
     "title": "Solar Power: Harnessing the Sun's Energy",
     "date": "2025-05-25",
     "excerpt": "Solar power is a clean and renewable energy source that can significantly reduce our carbon footprint.",
@@ -70,6 +71,7 @@ It's a step towards a greener future, where we can harness the sun's energy to p
 }
 
 post7 = {
+    "id": 7,
     "title": "The Benefits of Daily Exercise",
     "date": "2025-06-20",
     "excerpt": "Incorporating daily exercise into your routine can lead to improved physical and mental health.",
@@ -82,6 +84,7 @@ It's a holistic approach to wellness that benefits both body and mind.""",
 }
 
 post8 = {
+    "id": 8,
     "title": "The Vast Space of the Universe",
     "date": "2025-06-30",
     "excerpt": "The universe is a vast and mysterious place, filled with wonders waiting to be explored.",
@@ -94,6 +97,7 @@ As we continue to explore the cosmos, we uncover the secrets of our existence an
 }
 
 post9 = {
+    "id": 9,
     "title": "The Art of Cooking",
     "date": "2025-07-05",
     "excerpt": "Cooking is not just a necessity; it's an art that brings people together and creates lasting memories.",
@@ -105,6 +109,7 @@ It's a celebration of flavors, textures, and aromas that can transform an ordina
     "tags": ["Cooking", "Food", "CulinaryArts", "Lifestyle", "Culture"]
 }
 post10 = {
+    "id": 10,
     "title": "The Journey of Self-Discovery",
     "date": "2025-07-10",
     "excerpt": "Self-discovery is a lifelong journey that helps us understand our true selves and our place in the world.",

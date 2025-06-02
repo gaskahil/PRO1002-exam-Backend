@@ -1,0 +1,160 @@
+body {
+    margin:0;
+    font-size: 18px;
+    color: #720032;
+    background-color: #FFC1CC;
+}
+
+/*Navbar elements*/
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-bottom: 1px solid;
+  border-color: #4b0021;
+  background-color: #E75480;
+}
+
+nav a {
+  color: #FFFFFF;
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 10px 5px;
+}
+
+nav a:hover {
+  background-color: #FFFFFF;
+  color: #A94064;
+}
+
+.content {
+  background-color: #FFFFFF;
+  display:flex; 
+  flex-direction: column;
+  align-items: center;
+  margin: 40px 70px;
+  border-radius: 30px;
+}
+
+.post {
+  border: 1px solid #ffadd1;
+  margin: 25px;
+  width: 80%;
+  border-radius: 30px;
+}
+
+.post a {
+  text-decoration: none;
+  color: #ffe8f2;
+}
+
+.postInfo {
+  background-color: #DE5D83;
+  border-radius: 29px 29px 0 0;
+  padding: 15px;
+  margin-top: 0;
+  display: flex;
+  justify-content: space-between;
+  color: #ffe8f2;
+}
+
+.postContent {
+  padding: 10px 20px;
+}
+
+.postContent p {
+  color: #720032;
+}
+
+.tagsInfo {
+  margin-top: 45px;
+  margin-bottom: 5px;
+}
+
+.tagList {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-top: 0;
+}
+
+.tagElement {
+  list-style-type: none;
+  color: #A94064;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.tagElement:hover {
+  background-color: #ff9ac6;
+  color: #FFFFFF;
+}
+
+/*-------------Archive----------------------*/
+.archivePost a {
+  text-decoration: none;
+  color: #ffe8f2;
+}
+
+/*-------------createPostForm--------------*/
+.createPostForm, .editPostForm {
+  width: 70%;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+#bodyBox, #excerptBox {
+  resize: none;
+}
+
+#titleBox, #dateBox, #tagsBox, #commentTitleBox, #commentDateBox {
+  padding: 10px;
+}
+
+/*-------------comment form----------------*/
+.commentForm {
+  width: 70%;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 20%;
+}
+.comments {
+  margin-top: 0;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  color: #720032;
+}
+
+.comment-form textarea {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #A94064;
+  margin-bottom: 10px;
+  padding: 8px;
+  resize: none;
+}
+
+button {
+  background: #A94064;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+
+/*-------------footer----------------*/
+footer {
+  background-color: #A94064;
+  color: white;
+  padding: 25px 0;
+  text-align: center;
+}

@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Create New Post</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=edit" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+      <a class="nav-link" href="blogposts.html">Old blog Posts</a>
+      <a class="nav-link" href="tags.html">Tags</a>
+      <a class="nav-link" href="{{ url_for('create_post') }}">Create New Post</a>
+    </nav>
+    <section class="content">
+      <h1>Create New Blog Post</h1>
+      <form class="createPostForm" method="post" action="{{ url_for('create_post') }}">
+        <label for="title">Title:</label><br>
+        <input type="text" id="titleBox" name="title" required><br><br>
+
+        <label for="date">Date:</label><br>
+        <input type="date" id="dateBox" name="date" required><br><br>
+
+        <label for="excerpt">Excerpt:</label><br>
+        <textarea id="excerptBox" name="excerpt" rows="2" required></textarea><br><br>
+
+        <label for="body">Body:</label><br>
+        <textarea id="bodyBox" name="body" rows="8" required></textarea><br><br>
+
+        <label for="tags">Tags (comma separated):</label><br>
+        <input type="text" id="tagsBox" name="tags"><br><br>
+
+        <button type="submit">Create Post</button>
+      </form>
+    </section>
+    <footer>
+      <p>Blogpost content created using ChatGPT</p>
+      <p>Copyright © {{year}}</p>
+    </footer>
+  </body>
+</html>
