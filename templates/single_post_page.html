@@ -33,31 +33,33 @@
             {% endfor %}
             </ul>
         </div><!--/postContent-->
-        <section class="comments">
-  <h3>Comments</h3>
-  <ul>
-    {% for comment in post.comments %}
-      <li>
-        <strong>{{ comment.title }}</strong> ({{ comment.date }}):<br>
-        {{ comment.content }}
-      </li>
-    {% else %}
-      <li>No comments yet.</li>
-    {% endfor %}
-  </ul>
-  <form class="commentForm" method="post" action="{{ url_for('add_comment', post_id=post.id) }}">
-    <label for="commentTitle">Title:</label><br>
-    <input type="text" id="commentTitle" name="title" required><br>
-    <label for="comment">Leave a comment:</label><br>
-    <textarea id="comment" name="content" rows="4" cols="50" required></textarea><br>
-    <button type="submit">Submit</button>
-  </form>
-  <!-- Placeholder for displaying comments -->
-  <div class="comment-list">
-  </div>
-</section>
-      </div> <!--/post-->
-    </section>
+        <div class="commentArea">
+          <section class="comments">
+            <h3>Comments</h3>
+            <ul>
+            {% for comment in post.comments %}
+              <li>
+                <strong>{{ comment.title }}</strong> ({{ comment.date }}):<br>
+                {{ comment.content }}
+              </li>
+            {% else %}
+              <li>No comments yet.</li>
+            {% endfor %}
+            </ul>
+            <form class="commentForm" method="post" action="{{ url_for('add_comment', post_id=post.id) }}">
+              <label for="commentTitle">Title:</label><br>
+              <input type="text" id="commentTitle" name="title" required><br>
+              <label for="comment">Leave a comment:</label><br>
+              <textarea id="comment" name="content" rows="4" cols="50" required></textarea><br>
+              <button type="submit">Submit</button>
+            </form>
+            <!-- Placeholder for displaying comments -->
+            <div class="commentList">
+            </div>
+          </section>
+        </div> <!--/post-->
+      </section>
+        </div><!--/commentArea-->
     <footer>
       <p>Blogpost content created using ChatGPT</p>
       <p>Copyright © {{year}}</p>

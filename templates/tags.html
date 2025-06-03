@@ -19,7 +19,7 @@
         <div class="searchBox">
             <p>Here you can search for tags:</p>
           <form action="{{ url_for('search_tags') }}" method="get">
-            <input type="text" name="query" placeholder="Search tags..." required>
+            <input type="text" id="searchBox" name="query" placeholder="Search tags..." required>
             <button type="submit">Search</button>
           </form>
         </div>
@@ -27,12 +27,12 @@
           <ul class="tagList">
             {% if tags %}
             {% for tag in tags %}
-            <li>
+            <li class="tagElement">
             <a href="{{ url_for('show_tag', tag_id=tag.id) }}">{{ tag.name }}</a> ({{ tag.post_count }})
             </li>
             {% endfor %}
             {% else %}
-            <li>No tags found for "{{ query }}".</li>
+            <li class="noResultLi">No tags found for "{{ query }}".</li>
             {% endif %}
             </ul>
         </section><!--/tagsSection-->

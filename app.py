@@ -140,10 +140,9 @@ def tags():
 def search_tags():
     query = request.args.get('query', '')
     tags = Tag.query.filter(Tag.name.ilike(f'%{query}%')).all()
-    # Optionally, add post_count for each tag
     for tag in tags:
         tag.post_count = tag.posts.count()
-    return render_template('tags.html', tags=tags, title='Tags', year=2025)
+    return render_template('tags.html', tags=tags, title='Tags', query=query, year=2025)
 
 # route to show posts linked to spesific tag
 @app.route('/tag/<int:tag_id>')

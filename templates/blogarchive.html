@@ -14,9 +14,9 @@
       <a class="nav-link" href="{{ url_for('create_post') }}">Create New Post</a>
     </nav>
     <section class="content">
-        <h1>All blog posts</h1>
+        <h1>{{ title|capitalize }}</h1>
         {% for post in posts %}
-        <div class="archivePost">
+        <div class="post">
         <div class="postInfo">
           <h3>
             <a href="{{ url_for('show_post', post_id=post.id) }}">{{ post.title }}</a>

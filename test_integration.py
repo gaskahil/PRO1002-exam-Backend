@@ -30,6 +30,8 @@ def test_create_and_query_post(test_client):
 def test_tag_relationship(test_client):
     with app.app_context():
         tag = Tag(name='TestTag')
+        db.session.add(tag)
+        db.session.commit()
         post = Post(title='Tagged Post', date='2025-06-03', excerpt='ex', body='body', tags=[tag])
         db.session.add(post)
         db.session.commit()
