@@ -1,12 +1,23 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import date
+import os
+import sqlite3
+
+# checks the instance folder for the blog.db file, if it doesn't exist, the file is created
+db_path = os.path.join('instance', 'blog.db')
+sql_path = 'blog.sql'
+
+if not os.path.exists(db_path):
+    with open(sql_path, 'r') as f:
+        sql = f.read()
+    conn = sqlite3.connect(db_path)
+    conn.executescript(sql)
+    conn.close()
 
 app = Flask(__name__)
-#trying to connect to a local SQLite database with an explicit path
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/hildegaska/Documents/GitHub/PRO1002-exam-Backend/blog.db'
-#original one, commented out
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
 db = SQLAlchemy(app)
 
 # Association table for many-to-many relationship
@@ -60,11 +71,35 @@ def edit_post(post_id):
         return redirect(url_for('show_post', post_id=post.id))
     return render_template('edit_post.html', post=post, year=2025)
 
+# Saving comments on a blog post
+class Comment(db.Model):
+    __tablename__ = 'comments'
+    id = db.Column(db.Integer, primary_key=True)
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), nullable=False)
+    date = db.Column(db.String(20), nullable=False)
+    title = db.Column(db.String(200), nullable=False)  
+    content = db.Column(db.Text, nullable=False)
+    post = db.relationship('Post', backref=db.backref('comments', lazy=True))
+
+@app.route('/post/<int:post_id>/comment', methods=['POST'])
+def add_comment(post_id):
+    title = request.form['title']
+    content = request.form['content']
+    new_comment = Comment(
+        post_id=post_id,
+        date=date.today().isoformat(),
+        title=title,
+        content=content
+    )
+    db.session.add(new_comment)
+    db.session.commit()
+    return redirect(url_for('show_post', post_id=post_id))
+
 # Create blog post page
 @app.route('/create_post', methods=['GET', 'POST'])
 def create_post():
     if request.method == 'POST':
-        tag_names = [t.strip() for t in request.form['tags'].split(',') if t.strip()]
+        tag_names = [t.strip().capitalize() for t in request.form['tags'].split(',') if t.strip()]
         tags = []
         for name in tag_names:
             tag = Tag.query.filter_by(name=name).first()

@@ -27,26 +27,33 @@
           <p class="tagsInfo"><strong>Tags:</strong></p>
       <ul class="tagList">
         {% for tag in post.tags %}
-          <li class="tagElement">{{ tag.name }}</li>
-        {% endfor %}
-      </ul>
+            <li class="tagElement">
+            <a href="{{ url_for('show_tag', tag_id=tag.id) }}">{{ tag.name }}</a>
+            </li>
+            {% endfor %}
+            </ul>
         </div><!--/postContent-->
         <section class="comments">
   <h3>Comments</h3>
-  <form class="commentForm" method="post" action="#">
-  <label for="comment-title">Title:</label><br>
-  <input type="text" id="commentTitleBox" name="comment_title" required><br><br>
-
-  <label for="comment-date">Date:</label><br>
-  <input type="date" id="commentDateBox" name="comment_date" value="{{ current_date }}" required><br><br>
-
-  <label for="comment">Leave a comment:</label><br>
-  <textarea id="comment" name="commentBox" rows="4" cols="50" required></textarea><br>
-  <button type="submit">Submit</button>
-</form>
+  <ul>
+    {% for comment in post.comments %}
+      <li>
+        <strong>{{ comment.title }}</strong> ({{ comment.date }}):<br>
+        {{ comment.content }}
+      </li>
+    {% else %}
+      <li>No comments yet.</li>
+    {% endfor %}
+  </ul>
+  <form class="commentForm" method="post" action="{{ url_for('add_comment', post_id=post.id) }}">
+    <label for="commentTitle">Title:</label><br>
+    <input type="text" id="commentTitle" name="title" required><br>
+    <label for="comment">Leave a comment:</label><br>
+    <textarea id="comment" name="content" rows="4" cols="50" required></textarea><br>
+    <button type="submit">Submit</button>
+  </form>
   <!-- Placeholder for displaying comments -->
   <div class="comment-list">
-    <p>No comments yet.</p>
   </div>
 </section>
       </div> <!--/post-->

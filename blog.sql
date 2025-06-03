@@ -224,3 +224,13 @@ INSERT INTO post_tags (post_id, tag_id) VALUES (9, 29);
 INSERT INTO post_tags (post_id, tag_id) VALUES (9, 30); 
 INSERT INTO post_tags (post_id, tag_id) VALUES (10, 31);
 INSERT INTO post_tags (post_id, tag_id) VALUES (10, 32);
+
+
+CREATE TABLE comments (
+    id INTEGER PRIMARY KEY,
+    post_id INTEGER NOT NULL,
+    date TEXT NOT NULL,
+    title TEXT NOT NULL,
+    content TEXT NOT NULL,
+    FOREIGN KEY (post_id) REFERENCES posts(id)
+);

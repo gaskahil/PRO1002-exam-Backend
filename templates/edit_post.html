@@ -28,7 +28,7 @@
         <textarea id="bodyBox" name="body" rows="8" required>{{ post.body }}</textarea><br><br>
 
         <label for="tags">Tags (comma separated):</label><br>
-        <input type="text" id="tagsBox" name="tags" value="{% for tag in post.tags %}{{ tag.name }}{% if not loop.last %}, {% endif %}{% endfor %}">
+        <input type="text" id="tagsBox" name="tags" value="{% for tag in post.tags %}{{ tag.name|capitalize }}{% if not loop.last %}, {% endif %}{% endfor %}">
 
         <button type="submit">Save Changes</button>
       </form>
