@@ -9,8 +9,8 @@
   <body>
     <nav class="navbar">
       <a class="nav-link" href="{{ url_for('home') }}">Home</a>
-      <a class="nav-link" href="blogposts.html">Old blog Posts</a>
-      <a class="nav-link" href="tags.html">Tags</a>
+      <a class="nav-link" href="{{ url_for('blogarchive') }}">Old blog Posts</a>
+      <a class="nav-link" href="{{ url_for('tags') }}">Tags</a>
       <a class="nav-link" href="{{ url_for('create_post') }}">Create New Post</a>
     </nav>
     <section class="content">

@@ -3,7 +3,7 @@ CREATE TABLE posts (
     title TEXT NOT NULL,
     date TEXT NOT NULL,
     excerpt TEXT NOT NULL,
-    body TEXT NOT NULL,
+    body TEXT NOT NULL
 );
 
 INSERT INTO posts (id, title, date, excerpt, body) VALUES (

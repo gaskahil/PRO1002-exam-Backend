@@ -14,27 +14,27 @@
       <a class="nav-link" href="{{ url_for('create_post') }}">Create New Post</a>
     </nav>
     <section class="content">
-        <h1>All blog posts</h1>
-        {% for post in posts %}
-        <div class="archivePost">
-        <div class="postInfo">
-          <h3>
-            <a href="{{ url_for('show_post', post_id=post.id) }}">{{ post.title }}</a>
-          </h3>
-          <p class="postDate"><strong>Date:</strong> {{ post.date }}</p>
+        <h1>{{ title|capitalize }}</h1>
+        <p>Welcome to an overview of my tags!</p>
+        <div class="searchBox">
+            <p>Here you can search for tags:</p>
+          <form action="{{ url_for('search_tags') }}" method="get">
+            <input type="text" name="query" placeholder="Search tags..." required>
+            <button type="submit">Search</button>
+          </form>
         </div>
-        <div class="postContent">
-          <p><strong>Excerpt:</strong> {{ post.excerpt }}</p>
-          <p class="tagsInfo"><strong>Tags:</strong></p>
+        <section class="tagsSection">
           <ul class="tagList">
-            {% for tag in post.tags %}
-              <li class="tagElement">{{ tag.name }}</li>
+            {% if tags %}
+            {% for tag in tags %}
+            <li>{{ tag.name }} ({{ tag.post_count }})</li>
             {% endfor %}
+            {% else %}
+            <li>No tags found for "{{ query }}".</li>
+            {% endif %}
           </ul>
-        </div>
-      </div>
-    {% endfor %}
-    </section>
+        </section><!--/tagsSection-->
+    </section><!--/content-->
     <footer>
       <p>Blogpost content created using ChatGPT</p>
       <p>Copyright © {{year}}</p>

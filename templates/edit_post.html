@@ -9,7 +9,7 @@
     <nav class="navbar">
       <a class="nav-link" href="{{ url_for('home') }}">Home</a>
       <a class="nav-link" href="{{ url_for('blogarchive') }}">Old blog Posts</a>
-      <a class="nav-link" href="tags.html">Tags</a>
+      <a class="nav-link" href="{{ url_for('tags') }}">Tags</a>
       <a class="nav-link" href="{{ url_for('create_post') }}">Create New Post</a>
     </nav>
     <section class="content">
@@ -28,7 +28,7 @@
         <textarea id="bodyBox" name="body" rows="8" required>{{ post.body }}</textarea><br><br>
 
         <label for="tags">Tags (comma separated):</label><br>
-        <input type="text" id="tagsBox" name="tags" value="{{ post.tags | join(', ') }}"><br><br>
+        <input type="text" id="tagsBox" name="tags" value="{% for tag in post.tags %}{{ tag.name }}{% if not loop.last %}, {% endif %}{% endfor %}">
 
         <button type="submit">Save Changes</button>
       </form>
