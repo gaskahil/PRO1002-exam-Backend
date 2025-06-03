@@ -26,6 +26,7 @@ post_tags = db.Table('post_tags',
     db.Column('tag_id', db.Integer, db.ForeignKey('tags.id'), primary_key=True)
 )
 
+# Model for blog posts
 class Post(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
@@ -35,6 +36,7 @@ class Post(db.Model):
     body = db.Column(db.Text, nullable=False)
     tags = db.relationship('Tag', secondary=post_tags, backref=db.backref('posts', lazy='dynamic'))
 
+# Model for tags
 class Tag(db.Model):
     __tablename__ = 'tags'
     id = db.Column(db.Integer, primary_key=True)
@@ -49,6 +51,7 @@ def show_post(post_id):
     today = date.today().isoformat()
     return render_template('single_post_page.html', post=post, post_tags=post_tags, year=2025, current_date=today)
 
+# Page to edit a blog post
 @app.route('/edit/<int:post_id>', methods=['GET', 'POST'])
 def edit_post(post_id):
     post = Post.query.get_or_404(post_id)
@@ -81,6 +84,7 @@ class Comment(db.Model):
     content = db.Column(db.Text, nullable=False)
     post = db.relationship('Post', backref=db.backref('comments', lazy=True))
 
+# Model to add and save comments made on a post
 @app.route('/post/<int:post_id>/comment', methods=['POST'])
 def add_comment(post_id):
     title = request.form['title']
@@ -95,7 +99,7 @@ def add_comment(post_id):
     db.session.commit()
     return redirect(url_for('show_post', post_id=post_id))
 
-# Create blog post page
+# Creates the page to make a new blog post
 @app.route('/create_post', methods=['GET', 'POST'])
 def create_post():
     if request.method == 'POST':
@@ -119,18 +123,17 @@ def create_post():
         return redirect(url_for('show_post', post_id=new_post.id))
     return render_template('create_post.html', year=2025)
 
-# create home page
+# creates the home page named 'simple-variables.html'
 @app.route('/')
 def home():
     posts = Post.query.order_by(Post.date.desc()).all()
     print(posts)
     return render_template('simple-variables.html', posts=posts, title='Home Page', who='everyone', year=2025)
 
-# Create tags page
+# Create a page for tags
 @app.route('/tags')
 def tags():
     tags = Tag.query.all()
-    # Optionally, add post_count for each tag
     for tag in tags:
         tag.post_count = tag.posts.count()
     return render_template('tags.html', tags=tags, title='Tags Overview', year=2025)
