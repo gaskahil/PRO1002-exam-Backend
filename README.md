@@ -1,15 +1,6 @@
 Tasks left to do: 
 - Document how to run tests in your README.md
 
-
-Using the SQLAlchemy's ORM (Object Relational Mapping) and query methods (like Post.query.get_or_404 and Tag.query.filter_by) should help protect against SQL Injection. 
-
-Having Jinja2 templates should help avoid script injection, but using |safe is something one should be careful with.
-
-Bonus: 
-I can import bleach to help filter through word usage in the blog posts and comments.
-
-
 How to run test: 
 In the terminal, install pytest:
 I used pip3 install pytest, depending on VSC, you might not add pip3.
